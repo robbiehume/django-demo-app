@@ -4,11 +4,11 @@ from .models import ToDoList, Item
 
 
 def home(response):
-    return render(response, 'main/home.html')
+    return render(response, 'main/home.html', {})
 
 
 def index(response, id):
     ls = ToDoList.objects.get(id=id)
-    return render(response, 'main/base.html')
+    return render(response, 'main/list.html', {'ls': ls})
 
 
