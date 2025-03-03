@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+
+{% block content%}
+Create Page
+<form method='post' actions='/create/'>
+    {{form}}
+    <button type='submit' name='save'>Create New</button>
+</form>
+{% endblock %}
