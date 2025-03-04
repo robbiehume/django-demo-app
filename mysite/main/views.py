@@ -4,18 +4,18 @@ from .models import ToDoList, Item
 from .forms import CreateNewList
 
 
-def home(response):
-    return render(response, 'main/home.html', {})
+def home(request):
+    return render(request, 'main/home.html', {})
 
 
-def index(response, id):
+def index(request, id):
     ls = ToDoList.objects.get(id=id)
-    return render(response, 'main/list.html', {'ls': ls})
+    return render(request, 'main/list.html', {'ls': ls})
 
 
-def create(response):
-    if response.method == 'POST':
-        form = CreateNewList(response.POST)
+def create(request):
+    if request.method == 'POST':
+        form = CreateNewList(request.POST)
 
         if form.is_valid():
             n = form.cleaned_data['name']
@@ -26,4 +26,4 @@ def create(response):
 
     else:
         form = CreateNewList()
-    return render(response, 'main/create.html', {'form': form})
+    return render(request, 'main/create.html', {'form': form})
